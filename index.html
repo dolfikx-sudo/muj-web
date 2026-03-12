@@ -1,25 +1,146 @@
 <!DOCTYPE html>
-<html>
+<html lang="cs">
 <head>
 <meta charset="UTF-8">
-<title>Můj první web</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Monika Podskalská | Malířka</title>
+
 <style>
+
 body{
-font-family: Arial;
-text-align:center;
-background:#f4f4f4;
-margin-top:100px;
-}
-h1{
+margin:0;
+font-family: Arial, sans-serif;
+background:#f6f6f6;
 color:#333;
 }
+
+header{
+background:#111;
+color:white;
+padding:60px 20px;
+text-align:center;
+}
+
+header h1{
+font-size:48px;
+margin-bottom:10px;
+}
+
+header p{
+font-size:20px;
+opacity:0.8;
+}
+
+.container{
+max-width:1100px;
+margin:auto;
+padding:40px 20px;
+}
+
+.gallery{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.gallery img{
+width:100%;
+border-radius:10px;
+box-shadow:0 10px 25px rgba(0,0,0,0.15);
+transition:0.3s;
+}
+
+.gallery img:hover{
+transform:scale(1.05);
+}
+
+.about{
+text-align:center;
+max-width:700px;
+margin:auto;
+line-height:1.6;
+}
+
+.contact{
+text-align:center;
+}
+
+button{
+background:#111;
+color:white;
+border:none;
+padding:15px 30px;
+border-radius:30px;
+font-size:16px;
+cursor:pointer;
+}
+
+button:hover{
+background:#444;
+}
+
+footer{
+text-align:center;
+padding:30px;
+font-size:14px;
+color:#777;
+}
+
 </style>
+
 </head>
 
 <body>
 
-<h1>Monika smrdí</h1>
-<p>placeholder text - smrdí hodně</p>
+<header>
+<h1>Monika Podskalská</h1>
+<p>Současná česká malířka</p>
+</header>
+
+<section class="container">
+
+<h2 style="text-align:center">Galerie obrazů</h2>
+
+<div class="gallery">
+
+<img src="https://picsum.photos/500/600?1">
+<img src="https://picsum.photos/500/600?2">
+<img src="https://picsum.photos/500/600?3">
+<img src="https://picsum.photos/500/600?4">
+<img src="https://picsum.photos/500/600?5">
+<img src="https://picsum.photos/500/600?6">
+
+</div>
+
+</section>
+
+<section class="container about">
+
+<h2>O autorce</h2>
+
+<p>
+Monika Podskalská je začínající česká malířka, která se ve své tvorbě zaměřuje
+na barvu, emoce a atmosféru. Její obrazy spojují abstrakci s přírodními motivy
+a vytvářejí osobitý vizuální styl.
+</p>
+
+</section>
+
+<section class="container contact">
+
+<h2>Kontakt</h2>
+
+<p>Pro spolupráci nebo dotazy mě můžete kontaktovat:</p>
+
+<button>Email: monika@email.cz</button>
+
+</section>
+
+<footer>
+
+© 2026 Monika Podskalská
+
+</footer>
 
 </body>
 </html>
