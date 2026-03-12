@@ -1,89 +1,177 @@
 <!DOCTYPE html>
 <html lang="cs">
+
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
 <title>Monika Podskalská | Malířka</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
 
 body{
 margin:0;
-font-family: Arial, sans-serif;
-background:#f6f6f6;
-color:#333;
+background:#0f2a21;
+color:#e7efe9;
+font-family:'Inter',sans-serif;
 }
 
+/* HEADER */
+
 header{
-background:#111;
-color:white;
-padding:60px 20px;
+height:90vh;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
 text-align:center;
+padding:20px;
 }
 
 header h1{
-font-size:48px;
-margin-bottom:10px;
+font-family:'Playfair Display',serif;
+font-size:70px;
+letter-spacing:2px;
+margin:0;
 }
 
 header p{
+margin-top:12px;
 font-size:20px;
 opacity:0.8;
 }
 
+/* CONTAINER */
+
 .container{
 max-width:1100px;
 margin:auto;
-padding:40px 20px;
+padding:90px 20px;
 }
+
+/* TITLES */
+
+h2{
+text-align:center;
+font-family:'Playfair Display',serif;
+font-size:36px;
+margin-bottom:30px;
+}
+
+/* IMAGE OF THE MONTH */
+
+.featured{
+display:flex;
+flex-direction:column;
+align-items:center;
+text-align:center;
+}
+
+.featured img{
+max-width:500px;
+width:100%;
+border-radius:10px;
+box-shadow:0 20px 50px rgba(0,0,0,0.5);
+margin-bottom:20px;
+}
+
+/* GALLERY */
 
 .gallery{
 display:grid;
-grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-gap:20px;
+grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+gap:25px;
 }
 
 .gallery img{
 width:100%;
-border-radius:10px;
-box-shadow:0 10px 25px rgba(0,0,0,0.15);
-transition:0.3s;
+border-radius:8px;
+cursor:pointer;
+transition:0.4s;
+box-shadow:0 15px 40px rgba(0,0,0,0.4);
 }
 
 .gallery img:hover{
 transform:scale(1.05);
 }
 
+/* ABOUT */
+
 .about{
-text-align:center;
 max-width:700px;
 margin:auto;
-line-height:1.6;
+text-align:center;
+line-height:1.7;
+font-size:18px;
+opacity:0.9;
 }
+
+/* CONTACT */
 
 .contact{
 text-align:center;
+margin-top:30px;
 }
 
 button{
-background:#111;
-color:white;
+background:#1f4d3b;
 border:none;
-padding:15px 30px;
+color:white;
+padding:14px 30px;
 border-radius:30px;
 font-size:16px;
 cursor:pointer;
+transition:0.3s;
 }
 
 button:hover{
-background:#444;
+background:#2e6a53;
 }
+
+/* FOOTER */
 
 footer{
 text-align:center;
-padding:30px;
+padding:40px;
+opacity:0.6;
 font-size:14px;
-color:#777;
+}
+
+/* LIGHTBOX */
+
+.lightbox{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.9);
+display:none;
+align-items:center;
+justify-content:center;
+z-index:999;
+}
+
+.lightbox img{
+max-width:90%;
+max-height:90%;
+border-radius:8px;
+}
+
+/* SCROLL ANIMATION */
+
+.hidden{
+opacity:0;
+transform:translateY(40px);
+transition:all 0.8s;
+}
+
+.show{
+opacity:1;
+transform:translateY(0);
 }
 
 </style>
@@ -93,46 +181,71 @@ color:#777;
 <body>
 
 <header>
+
 <h1>Monika Podskalská</h1>
-<p>Současná česká malířka</p>
+<p>současná česká malířka</p>
+
 </header>
 
-<section class="container">
+<section class="container hidden">
 
-<h2 style="text-align:center">Galerie obrazů</h2>
+<h2>Obraz měsíce</h2>
 
-<div class="gallery">
+<div class="featured">
 
-<img src="https://picsum.photos/500/600?1">
-<img src="https://picsum.photos/500/600?2">
-<img src="https://picsum.photos/500/600?3">
-<img src="https://picsum.photos/500/600?4">
-<img src="https://picsum.photos/500/600?5">
-<img src="https://picsum.photos/500/600?6">
+<img src="https://picsum.photos/600/700?1">
+
+<p>Tento obraz reprezentuje aktuální tvorbu autorky a byl vybrán do soutěže současného umění.</p>
 
 </div>
 
 </section>
 
-<section class="container about">
+<section class="container hidden">
 
-<h2>O autorce</h2>
+<h2>Galerie</h2>
 
-<p>
-Monika Podskalská je začínající česká malířka, která se ve své tvorbě zaměřuje
-na barvu, emoce a atmosféru. Její obrazy spojují abstrakci s přírodními motivy
-a vytvářejí osobitý vizuální styl.
-</p>
+<div class="gallery">
+
+<img src="https://picsum.photos/500/600?2">
+<img src="https://picsum.photos/500/600?3">
+<img src="https://picsum.photos/500/600?4">
+<img src="https://picsum.photos/500/600?5">
+<img src="https://picsum.photos/500/600?6">
+<img src="https://picsum.photos/500/600?7">
+
+</div>
 
 </section>
 
-<section class="container contact">
+<section class="container hidden">
+
+<h2>O autorce</h2>
+
+<div class="about">
+
+<p>
+Monika Podskalská je česká malířka, která ve své tvorbě zkoumá vztah mezi
+barvou, emocí a prostorem. Inspiraci čerpá z přírody, světla a osobních
+prožitků. Její obrazy vytvářejí klidný prostor pro vnímání atmosféry
+a detailu.
+</p>
+
+</div>
+
+</section>
+
+<section class="container hidden">
 
 <h2>Kontakt</h2>
 
-<p>Pro spolupráci nebo dotazy mě můžete kontaktovat:</p>
+<div class="contact">
 
-<button>Email: monika@email.cz</button>
+<p>Pro spolupráci nebo dotazy:</p>
+
+<button>monika@email.cz</button>
+
+</div>
 
 </section>
 
@@ -141,6 +254,45 @@ a vytvářejí osobitý vizuální styl.
 © 2026 Monika Podskalská
 
 </footer>
+
+<div class="lightbox" id="lightbox">
+<img id="lightbox-img">
+</div>
+
+<script>
+
+/* LIGHTBOX */
+
+const images=document.querySelectorAll(".gallery img");
+const lightbox=document.getElementById("lightbox");
+const lightboxImg=document.getElementById("lightbox-img");
+
+images.forEach(img=>{
+img.addEventListener("click",()=>{
+lightbox.style.display="flex";
+lightboxImg.src=img.src;
+});
+});
+
+lightbox.addEventListener("click",()=>{
+lightbox.style.display="none";
+});
+
+/* SCROLL ANIMATION */
+
+const observer=new IntersectionObserver(entries=>{
+entries.forEach(entry=>{
+if(entry.isIntersecting){
+entry.target.classList.add("show");
+}
+});
+});
+
+document.querySelectorAll(".hidden").forEach(el=>{
+observer.observe(el);
+});
+
+</script>
 
 </body>
 </html>
