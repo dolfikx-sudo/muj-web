@@ -54,18 +54,18 @@ nav .logo{
   cursor:pointer;
   color:#e7efe9;
   text-decoration:none;
-  margin-right:55px; /* větší mezera při prvním načtení */
+  margin-right:70px;
   transition: margin 0.3s ease;
 }
 nav.shrink .logo{
-  margin-right:50px; /* zmenšíme po scrollu */
+  margin-right:50px;
 }
 
 /* Menu položky */
 nav ul{
   list-style:none;
   display:flex;
-  gap:40px; /* rovnoměrné rozestupy */
+  gap:50px; /* desktop mezera */
   margin:0;
   padding:0;
   white-space:nowrap;
@@ -246,7 +246,7 @@ footer{
 @media (max-width:768px){
   header{height:60vh;}
   .header-title{font-size:40px; top:35%;}
-  nav ul{gap:30px;}
+  nav ul{gap:20px;} /* zmenšené mezery pro mobil, aby se vešlo */
   nav .logo{font-size:28px;}
 }
 </style>
