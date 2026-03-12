@@ -43,18 +43,22 @@ nav{
   transition: all 0.3s ease;
 }
 nav.shrink{
-  padding:8px 20px;
-  background:rgba(15,42,33,1);
+  padding:8px 40px;
 }
 
-/* logo MR výraznější */
+/* logo MR výraznější a odsazené od menu */
 nav .logo{
   font-family:'Playfair Display',serif;
   font-weight:700;
-  font-size:32px; /* větší než ostatní položky */
+  font-size:32px;
   cursor:pointer;
   color:#e7efe9;
   text-decoration:none;
+  margin-right:70px; /* větší mezera při prvním načtení */
+  transition: margin 0.3s ease;
+}
+nav.shrink .logo{
+  margin-right:50px; /* zmenšíme po scrollu */
 }
 
 /* Menu položky */
@@ -358,7 +362,10 @@ document.addEventListener("contextmenu", function(e){ e.preventDefault(); });
 
 /* DYNAMICKÉ ZMENŠENÍ MENU */
 const nav = document.getElementById("mainNav");
-window.addEventListener("scroll", ()=>{if(window.scrollY > 50){nav.classList.add("shrink");}else{nav.classList.remove("shrink");}});
+window.addEventListener("scroll", ()=>{
+  if(window.scrollY > 50){nav.classList.add("shrink");}
+  else{nav.classList.remove("shrink");}
+});
 </script>
 
 </body>
