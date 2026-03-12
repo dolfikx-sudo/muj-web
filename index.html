@@ -49,7 +49,7 @@ nav.shrink{
 nav ul{
   list-style:none;
   display:flex;
-  gap:35px;
+  gap:45px; /* větší mezery mezi položkami menu */
   margin:0;
   padding:0;
 }
@@ -64,7 +64,7 @@ nav a:hover{
   opacity:1;
 }
 
-/* HEADER SLIDESHOW */
+/* HEADER */
 header{
   height:80vh;
   position:relative;
@@ -75,6 +75,34 @@ header{
   text-align:center;
   flex-direction:column;
 }
+
+/* statické jméno a fotka MR nahoře */
+.header-top{
+  position:absolute;
+  top:10%;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  align-items:center;
+  gap:15px;
+  z-index:10;
+}
+.header-top img{
+  width:60px;
+  height:60px;
+  border-radius:50%;
+  object-fit:cover;
+  border:2px solid #e7efe9;
+}
+.header-top h1{
+  font-family:'Playfair Display',serif;
+  font-size:32px;
+  margin:0;
+  color:#e7efe9;
+  text-shadow:0 0 10px rgba(0,0,0,0.7);
+}
+
+/* SLIDESHOW */
 .slide{
   position:absolute;
   width:100%;
@@ -82,19 +110,28 @@ header{
   background-size:cover;
   background-position:center;
   opacity:0;
-  transition:opacity 2s;
+  transition:opacity 0.5s ease-in-out;
 }
 .slide.active{
   opacity:1;
 }
-/* Jméno v headeru */
-.header-content h1{
-  font-family:'Playfair Display',serif;
-  font-size:48px;
-  margin:0;
-  color:#e7efe9;
-  text-shadow: 0 0 15px rgba(0,0,0,0.7);
+
+/* šipky */
+.arrow{
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:40px;
+  color:#fff;
+  cursor:pointer;
+  z-index:20;
+  user-select:none;
+  opacity:0.8;
+  transition:0.2s;
 }
+.arrow:hover{opacity:1;}
+.arrow.left{left:20px;}
+.arrow.right{right:20px;}
 
 /* CONTAINER */
 .container{
@@ -206,14 +243,13 @@ footer{
   transform:translateY(0);
 }
 
-/* RESPONSIVE HEADER */
+/* RESPONSIVE */
 @media (max-width:768px){
   header{height:60vh;}
-  .header-content h1{font-size:32px;}
-  nav ul{gap:20px;}
+  .header-top h1{font-size:28px;}
+  nav ul{gap:25px;}
 }
 </style>
-
 </head>
 
 <body>
@@ -230,13 +266,17 @@ footer{
 
 <!-- HEADER -->
 <header>
+<div class="header-top">
+<img src="https://picsum.photos/100/100?portrait" alt="Monique Rilke">
+<h1>Monique Rilke</h1>
+</div>
+
 <div class="slide active" style="background-image:url('https://picsum.photos/1600/1000?1')"></div>
 <div class="slide" style="background-image:url('https://picsum.photos/1600/1000?2')"></div>
 <div class="slide" style="background-image:url('https://picsum.photos/1600/1000?3')"></div>
 
-<div class="header-content">
-<h1>Monique Rilke</h1>
-</div>
+<i class="fas fa-chevron-left arrow left"></i>
+<i class="fas fa-chevron-right arrow right"></i>
 </header>
 
 <!-- SOUTĚŽ -->
@@ -300,11 +340,20 @@ monique.rilke@seznam.cz</a></p>
 /* SLIDESHOW */
 let slides=document.querySelectorAll(".slide");
 let index=0;
-setInterval(()=>{
-slides[index].classList.remove("active");
-index=(index+1)%slides.length;
-slides[index].classList.add("active");
-},5000);
+
+function showSlide(n){
+  slides.forEach((s,i)=>s.classList.remove("active"));
+  slides[n].classList.add("active");
+  index=n;
+}
+
+function nextSlide(){showSlide((index+1)%slides.length);}
+function prevSlide(){showSlide((index-1+slides.length)%slides.length);}
+
+document.querySelector(".arrow.right").addEventListener("click",nextSlide);
+document.querySelector(".arrow.left").addEventListener("click",prevSlide);
+
+setInterval(nextSlide,5000); // automaticky
 
 /* LIGHTBOX */
 const images=document.querySelectorAll(".gallery img");
@@ -329,14 +378,11 @@ document.querySelectorAll(".hidden").forEach(el=>observer.observe(el));
 /* ZÁKLADNÍ OCHRANA OBRAZŮ */
 document.addEventListener("contextmenu", function(e){ e.preventDefault(); });
 
-/* DYNAMICKÉ ZMENŠENÍ MENU PŘI SCROLLU */
+/* DYNAMICKÉ ZMENŠENÍ MENU */
 const nav = document.getElementById("mainNav");
 window.addEventListener("scroll", ()=>{
-  if(window.scrollY > 50){
-    nav.classList.add("shrink");
-  } else{
-    nav.classList.remove("shrink");
-  }
+  if(window.scrollY > 50){nav.classList.add("shrink");}
+  else{nav.classList.remove("shrink");}
 });
 </script>
 
