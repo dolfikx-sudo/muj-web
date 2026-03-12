@@ -35,7 +35,7 @@ nav{
   background:rgba(15,42,33,0.95);
   backdrop-filter:blur(8px);
   display:flex;
-  justify-content:flex-end;
+  justify-content:space-between;
   align-items:center;
   padding:15px 60px;
   box-sizing:border-box;
@@ -45,6 +45,16 @@ nav{
 nav.shrink{
   padding:8px 40px;
   background:rgba(15,42,33,1);
+}
+
+/* logo MR */
+nav .logo{
+  font-family:'Playfair Display',serif;
+  font-weight:700;
+  font-size:28px;
+  cursor:pointer;
+  color:#e7efe9;
+  text-decoration:none;
 }
 nav ul{
   list-style:none;
@@ -231,6 +241,7 @@ footer{
   header{height:60vh;}
   .header-title{font-size:40px; top:35%;}
   nav ul{gap:35px;}
+  nav .logo{font-size:24px;}
 }
 </style>
 </head>
@@ -239,6 +250,7 @@ footer{
 
 <!-- MENU -->
 <nav id="mainNav">
+<a href="#top" class="logo">MR</a>
 <ul>
 <li><a href="#galerie">Galerie</a></li>
 <li><a href="#autor">O autorce</a></li>
@@ -247,7 +259,7 @@ footer{
 </nav>
 
 <!-- HEADER -->
-<header>
+<header id="top">
 <div class="header-title">Monique Rilke</div>
 
 <div class="slide active" style="background-image:url('https://picsum.photos/1600/1000?1')"></div>
@@ -283,9 +295,7 @@ footer{
 <h2>O autorce</h2>
 <div class="about">
 <p>
-Monique Rilke je česká malířka, která ve své tvorbě zkoumá vztah mezi barvou, emocí a prostorem. 
-Inspiraci čerpá z přírody, světla a osobních prožitků, vždy vychází z vlastních fotografií, aby zachytila své vlastní vidění daných momentů. 
-Ve svých obrazech pracuje s barvou a světlem tak, aby divák mohl vnímat atmosféru okamžiku a jemné nuance prostředí.
+Monique Rilke je česká malířka, která ve své tvorbě zkoumá vztah mezi barvou, emocí a prostorem. Inspiraci čerpá z přírody, světla a osobních prožitků, vždy vychází z vlastních fotografií, aby zachytila své vlastní vidění daných momentů. Ve svých obrazech pracuje s barvou a světlem tak, aby divák mohl vnímat atmosféru okamžiku a jemné nuance prostředí.
 </p>
 </div>
 </section>
