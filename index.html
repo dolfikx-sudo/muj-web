@@ -14,7 +14,7 @@
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
-<!-- Font Awesome -->
+<!-- Font Awesome pro ikony -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
@@ -35,7 +35,7 @@ nav{
   background:rgba(15,42,33,0.95);
   backdrop-filter:blur(8px);
   display:flex;
-  justify-content:space-between;
+  justify-content:flex-end;
   align-items:center;
   padding:15px 60px;
   box-sizing:border-box;
@@ -45,12 +45,6 @@ nav{
 nav.shrink{
   padding:8px 40px;
   background:rgba(15,42,33,1);
-}
-nav h3{
-  font-family:'Playfair Display',serif;
-  margin:0;
-  letter-spacing:1px;
-  font-size:22px;
 }
 nav ul{
   list-style:none;
@@ -75,6 +69,11 @@ header{
   height:80vh;
   position:relative;
   overflow:hidden;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  text-align:center;
+  flex-direction:column;
 }
 .slide{
   position:absolute;
@@ -88,8 +87,13 @@ header{
 .slide.active{
   opacity:1;
 }
-.header-content{
-  display:none; /* zůstává skryté */
+/* Jméno v headeru */
+.header-content h1{
+  font-family:'Playfair Display',serif;
+  font-size:48px;
+  margin:0;
+  color:#e7efe9;
+  text-shadow: 0 0 15px rgba(0,0,0,0.7);
 }
 
 /* CONTAINER */
@@ -202,10 +206,11 @@ footer{
   transform:translateY(0);
 }
 
-/* RESPONSIVE HEADER HEIGHT */
+/* RESPONSIVE HEADER */
 @media (max-width:768px){
   header{height:60vh;}
-  nav h3{font-size:20px;}
+  .header-content h1{font-size:32px;}
+  nav ul{gap:20px;}
 }
 </style>
 
@@ -213,8 +218,8 @@ footer{
 
 <body>
 
+<!-- MENU -->
 <nav id="mainNav">
-<h3>Monique Rilke</h3>
 <ul>
 <li><a href="#soutez">Soutěž</a></li>
 <li><a href="#galerie">Galerie</a></li>
@@ -223,13 +228,18 @@ footer{
 </ul>
 </nav>
 
+<!-- HEADER -->
 <header>
 <div class="slide active" style="background-image:url('https://picsum.photos/1600/1000?1')"></div>
 <div class="slide" style="background-image:url('https://picsum.photos/1600/1000?2')"></div>
 <div class="slide" style="background-image:url('https://picsum.photos/1600/1000?3')"></div>
-<div class="header-content"></div>
+
+<div class="header-content">
+<h1>Monique Rilke</h1>
+</div>
 </header>
 
+<!-- SOUTĚŽ -->
 <section id="soutez" class="container hidden">
 <h2>Soutěžní obrazy</h2>
 <div class="competition">
@@ -239,6 +249,7 @@ footer{
 </div>
 </section>
 
+<!-- GALERIE -->
 <section id="galerie" class="container hidden">
 <h2>Galerie</h2>
 <div class="gallery">
@@ -251,6 +262,7 @@ footer{
 </div>
 </section>
 
+<!-- O AUTORCE -->
 <section id="autor" class="container hidden">
 <h2>O autorce</h2>
 <div class="about">
@@ -262,6 +274,7 @@ světla a osobních prožitků.
 </div>
 </section>
 
+<!-- KONTAKT -->
 <section id="kontakt" class="container hidden contact">
 <h2>Kontakt</h2>
 <p><a href="mailto:monique.rilke@seznam.cz" style="color:#e7efe9;text-decoration:none;font-size:18px;">
@@ -273,10 +286,12 @@ monique.rilke@seznam.cz</a></p>
 </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
 © 2026 Monique Rilke
 </footer>
 
+<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
 <img id="lightbox-img">
 </div>
