@@ -35,7 +35,6 @@ nav{
   background:rgba(15,42,33,0.95);
   backdrop-filter:blur(8px);
   display:flex;
-  justify-content:space-between;
   align-items:center;
   padding:15px 60px;
   box-sizing:border-box;
@@ -55,11 +54,12 @@ nav .logo{
   cursor:pointer;
   color:#e7efe9;
   text-decoration:none;
+  margin-right:60px; /* oddělení loga od menu */
 }
 nav ul{
   list-style:none;
   display:flex;
-  gap:60px; /* větší mezera */
+  gap:60px; /* větší mezera mezi položkami menu */
   margin:0;
   padding:0;
   white-space:nowrap;
@@ -274,7 +274,6 @@ footer{
 <section id="galerie" class="container hidden">
 <h2>Galerie</h2>
 <div class="gallery">
-<!-- 12 obrázků -->
 <img src="https://picsum.photos/500/600?1" loading="lazy">
 <img src="https://picsum.photos/500/600?2" loading="lazy">
 <img src="https://picsum.photos/500/600?3" loading="lazy">
