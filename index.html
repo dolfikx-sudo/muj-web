@@ -14,7 +14,7 @@
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
-<!-- Font Awesome pro ikony -->
+<!-- Font Awesome -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
 <style>
@@ -32,7 +32,7 @@ nav{
   top:0;
   left:0;
   right:0;
-  background:rgba(15,42,33,0.9);
+  background:rgba(15,42,33,0.95);
   backdrop-filter:blur(8px);
   display:flex;
   justify-content:space-between;
@@ -40,6 +40,11 @@ nav{
   padding:15px 60px;
   box-sizing:border-box;
   z-index:1000;
+  transition: all 0.3s ease;
+}
+nav.shrink{
+  padding:8px 40px;
+  background:rgba(15,42,33,1);
 }
 nav h3{
   font-family:'Playfair Display',serif;
@@ -83,10 +88,8 @@ header{
 .slide.active{
   opacity:1;
 }
-
-/* odstraněno velké jméno z headeru */
 .header-content{
-  display:none;
+  display:none; /* zůstává skryté */
 }
 
 /* CONTAINER */
@@ -202,6 +205,7 @@ footer{
 /* RESPONSIVE HEADER HEIGHT */
 @media (max-width:768px){
   header{height:60vh;}
+  nav h3{font-size:20px;}
 }
 </style>
 
@@ -209,7 +213,7 @@ footer{
 
 <body>
 
-<nav>
+<nav id="mainNav">
 <h3>Monique Rilke</h3>
 <ul>
 <li><a href="#soutez">Soutěž</a></li>
@@ -223,10 +227,7 @@ footer{
 <div class="slide active" style="background-image:url('https://picsum.photos/1600/1000?1')"></div>
 <div class="slide" style="background-image:url('https://picsum.photos/1600/1000?2')"></div>
 <div class="slide" style="background-image:url('https://picsum.photos/1600/1000?3')"></div>
-
-<div class="header-content">
-<!-- Velké jméno odstraněno pro mobil -->
-</div>
+<div class="header-content"></div>
 </header>
 
 <section id="soutez" class="container hidden">
@@ -312,6 +313,16 @@ document.querySelectorAll(".hidden").forEach(el=>observer.observe(el));
 
 /* ZÁKLADNÍ OCHRANA OBRAZŮ */
 document.addEventListener("contextmenu", function(e){ e.preventDefault(); });
+
+/* DYNAMICKÉ ZMENŠENÍ MENU PŘI SCROLLU */
+const nav = document.getElementById("mainNav");
+window.addEventListener("scroll", ()=>{
+  if(window.scrollY > 50){
+    nav.classList.add("shrink");
+  } else{
+    nav.classList.remove("shrink");
+  }
+});
 </script>
 
 </body>
