@@ -35,31 +35,33 @@ nav{
   background:rgba(15,42,33,0.95);
   backdrop-filter:blur(8px);
   display:flex;
+  justify-content:space-between;
   align-items:center;
-  padding:15px 60px;
+  padding:15px 40px;
   box-sizing:border-box;
   z-index:1000;
   transition: all 0.3s ease;
 }
 nav.shrink{
-  padding:8px 40px;
+  padding:8px 20px;
   background:rgba(15,42,33,1);
 }
 
-/* logo MR */
+/* logo MR výraznější */
 nav .logo{
   font-family:'Playfair Display',serif;
   font-weight:700;
-  font-size:28px;
+  font-size:32px; /* větší než ostatní položky */
   cursor:pointer;
   color:#e7efe9;
   text-decoration:none;
-  margin-right:60px; /* oddělení loga od menu */
 }
+
+/* Menu položky */
 nav ul{
   list-style:none;
   display:flex;
-  gap:60px; /* větší mezera mezi položkami menu */
+  gap:50px; /* rovnoměrné rozestupy */
   margin:0;
   padding:0;
   white-space:nowrap;
@@ -67,7 +69,7 @@ nav ul{
 nav a{
   color:#e7efe9;
   text-decoration:none;
-  font-size:16px;
+  font-size:18px;
   opacity:0.85;
   transition:0.3s;
 }
@@ -240,8 +242,8 @@ footer{
 @media (max-width:768px){
   header{height:60vh;}
   .header-title{font-size:40px; top:35%;}
-  nav ul{gap:35px;}
-  nav .logo{font-size:24px;}
+  nav ul{gap:30px;}
+  nav .logo{font-size:28px;}
 }
 </style>
 </head>
@@ -327,12 +329,7 @@ monique.rilke@seznam.cz</a></p>
 /* HEADER SLIDESHOW */
 let slides=document.querySelectorAll("header .slide");
 let index=0;
-
-function showSlide(n){
-  slides.forEach((s,i)=>s.classList.remove("active"));
-  slides[n].classList.add("active");
-  index=n;
-}
+function showSlide(n){slides.forEach((s,i)=>s.classList.remove("active"));slides[n].classList.add("active");index=n;}
 function nextSlide(){showSlide((index+1)%slides.length);}
 function prevSlide(){showSlide((index-1+slides.length)%slides.length);}
 document.querySelector("header .arrow.right").addEventListener("click",nextSlide);
@@ -344,28 +341,16 @@ const galleryImages=document.querySelectorAll(".gallery img");
 const lightbox=document.getElementById("lightbox");
 const lightboxImg=document.getElementById("lightbox-img");
 let lbIndex=0;
-
-function showLightbox(n){
-  lbIndex=n;
-  lightbox.style.display="flex";
-  lightboxImg.src=galleryImages[n].src;
-}
+function showLightbox(n){lbIndex=n;lightbox.style.display="flex";lightboxImg.src=galleryImages[n].src;}
 function nextLB(){showLightbox((lbIndex+1)%galleryImages.length);}
 function prevLB(){showLightbox((lbIndex-1+galleryImages.length)%galleryImages.length);}
-
-galleryImages.forEach((img,i)=>{
-  img.addEventListener("click",()=>showLightbox(i));
-});
+galleryImages.forEach((img,i)=>{img.addEventListener("click",()=>showLightbox(i));});
 document.querySelector(".lightbox .arrow.right").addEventListener("click",nextLB);
 document.querySelector(".lightbox .arrow.left").addEventListener("click",prevLB);
 lightbox.addEventListener("click",(e)=>{if(e.target===lightbox) lightbox.style.display="none";});
 
 /* SCROLL ANIMATION */
-const observer=new IntersectionObserver(entries=>{
-entries.forEach(entry=>{
-if(entry.isIntersecting){entry.target.classList.add("show");}
-});
-});
+const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("show");}})});
 document.querySelectorAll(".hidden").forEach(el=>observer.observe(el));
 
 /* ZÁKLADNÍ OCHRANA OBRAZŮ */
@@ -373,10 +358,7 @@ document.addEventListener("contextmenu", function(e){ e.preventDefault(); });
 
 /* DYNAMICKÉ ZMENŠENÍ MENU */
 const nav = document.getElementById("mainNav");
-window.addEventListener("scroll", ()=>{
-  if(window.scrollY > 50){nav.classList.add("shrink");}
-  else{nav.classList.remove("shrink");}
-});
+window.addEventListener("scroll", ()=>{if(window.scrollY > 50){nav.classList.add("shrink");}else{nav.classList.remove("shrink");}});
 </script>
 
 </body>
